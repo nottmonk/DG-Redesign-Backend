@@ -1,5 +1,6 @@
-const Profile = require("./Profile");
-
 module.exports = {
-  Profile,
+  Profile: require("./Profile"),
+  Ads: require("./Ads"),
+  Deals: require("./Deals"),
+  Home: require("./Home"),
 };
