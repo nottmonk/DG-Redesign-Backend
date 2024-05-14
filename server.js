@@ -15,31 +15,18 @@ const myDGRouter = require("./routes/myDG");
 const ccbRouter = require("./routes/ccb");
 const weeklyAdsRouter = require("./routes/weeklyAds");
 const productRouter = require("./routes/products");
+const AuthRouter = require("./routes/AuthRouter");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-app.use("/", (req, res) => {
-  fs.readFile("DummyData", (err, data) => {
-    if (err) {
-      console.log("Error reading file");
-      res.status(500).send("internal server error");
-      return;
-    }
 
-    try {
-      const jsonData = JSON.parse(data);
-      res.json(jsonData);
-    } catch (parseError) {
-      console.log("error parsing", parseError);
-      res.status(500).send("Internal server error");
-    }
-  });
-});
 app.use("/dg", dollarGeneralRouter);
 app.use("/deals", ccbRouter);
 app.use("/myDg", myDGRouter);
 app.use("/weekly-ads", weeklyAdsRouter);
 app.use("/products", productRouter);
+app.use("/auth", AuthRouter);
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
