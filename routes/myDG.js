@@ -6,7 +6,7 @@ const middleware = require("../middleware");
 
 router.get("/", middleware.stripToken, middleware.verifyToken, myDGCtrl.index);
 router.post(
-  "/myDG",
+  "/",
   middleware.stripToken,
   middleware.verifyToken,
   myDGCtrl.create

@@ -16,7 +16,6 @@ const ccbRouter = require("./routes/ccb");
 const weeklyAdsRouter = require("./routes/weeklyAds");
 const productRouter = require("./routes/products");
 const AuthRouter = require("./routes/AuthRouter");
-const PostRouter = require("./routes/PostRouter");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,6 +28,5 @@ app.use("/myDg", myDGRouter);
 app.use("/weekly-ads", weeklyAdsRouter);
 app.use("/products", productRouter);
 app.use("/auth", AuthRouter);
-app.use("/posts", PostRouter);
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
