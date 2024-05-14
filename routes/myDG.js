@@ -2,11 +2,32 @@ const express = require("express");
 const router = express.Router();
 
 const myDGCtrl = require("../controllers/myDG");
+const middleware = require("../middleware");
 
-router.get("/", myDGCtrl.index);
-router.post("/myDG", myDGCtrl.create);
-router.get("/:id", myDGCtrl.show);
-router.delete("/:id", myDGCtrl.delete);
-router.put("/:id", myDGCtrl.update);
+router.get("/", middleware.stripToken, middleware.verifyToken, myDGCtrl.index);
+router.post(
+  "/myDG",
+  middleware.stripToken,
+  middleware.verifyToken,
+  myDGCtrl.create
+);
+router.get(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  myDGCtrl.show
+);
+router.delete(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  myDGCtrl.delete
+);
+router.put(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  myDGCtrl.update
+);
 
 module.exports = router;

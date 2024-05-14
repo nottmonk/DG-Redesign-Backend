@@ -1,9 +1,9 @@
 const express = require("express");
-const { Profile } = require("../models");
+const { User } = require("../models");
 
 const index = async (req, res, next) => {
   try {
-    res.json(await Profile.find({}));
+    res.json(await User.find({}));
   } catch {
     res.status(400).json(error);
   }
@@ -11,7 +11,7 @@ const index = async (req, res, next) => {
 
 const create = async (req, res, next) => {
   try {
-    res.json(await Profile.create(req.body));
+    res.json(await User.create(req.body));
   } catch (error) {
     res.status(400).json(error);
   }
@@ -19,7 +19,7 @@ const create = async (req, res, next) => {
 
 const show = async (req, res, next) => {
   try {
-    res.json(await Profile.findById(req.params.id));
+    res.json(await User.findById(req.params.id));
   } catch (error) {
     res.status(400).json(error);
   }
@@ -27,7 +27,7 @@ const show = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    res.json(await Profile.findByIdAndDelete(req.params));
+    res.json(await User.findByIdAndDelete(req.params));
   } catch (error) {
     res.status(400).json(error);
   }
@@ -36,7 +36,7 @@ const destroy = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     res.json(
-      await Profile.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
     );
   } catch {}
 };
