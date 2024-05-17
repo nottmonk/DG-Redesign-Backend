@@ -27,7 +27,7 @@ const show = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    res.json(await User.findByIdAndDelete(req.params));
+    res.json(await User.findByIdAndDelete(req.params.id));
   } catch (error) {
     res.status(400).json(error);
   }

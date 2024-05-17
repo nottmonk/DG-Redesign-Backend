@@ -19,8 +19,8 @@ router.get(
 );
 router.delete(
   "/:id",
-  middleware.stripToken,
-  middleware.verifyToken,
+  // middleware.stripToken,
+  // middleware.verifyToken,
   myDGCtrl.delete
 );
 router.put(
