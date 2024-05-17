@@ -8,8 +8,6 @@ require("./config/db.connection");
 const rawData = fs.readFileSync("DummyData");
 const products = JSON.parse(rawData);
 
-seedDatabase();
-
 async function seedDatabase() {
   try {
     await Product.insertMany(products.products);
@@ -20,3 +18,5 @@ async function seedDatabase() {
     mongoose.connection.close();
   }
 }
+
+seedDatabase();
