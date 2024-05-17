@@ -4,7 +4,7 @@ const { Product } = require("../models");
 const index = async (req, res, next) => {
   try {
     res.json(await Product.find({}));
-  } catch {
+  } catch (error) {
     res.status(400).json(error);
   }
 };

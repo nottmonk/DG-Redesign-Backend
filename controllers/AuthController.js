@@ -30,6 +30,7 @@ const Login = async (req, res) => {
     );
     if (matched) {
       let payload = {
+        name: user.name,
         id: user.id,
         email: user.email,
       };
