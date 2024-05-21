@@ -16,6 +16,7 @@ const Register = async (req, res) => {
       res.send(user);
     }
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
@@ -45,7 +46,13 @@ const Login = async (req, res) => {
   }
 };
 
+const CheckSession = async (req, res) => {
+  const { payload } = res.locals;
+  res.send(payload);
+};
+
 module.exports = {
   Register,
   Login,
+  CheckSession,
 };
